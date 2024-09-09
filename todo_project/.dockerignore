@@ -33,4 +33,4 @@ staticfiles/
 
 # Exclude Docker-related files
 Dockerfile
-docker-compose.yml
+compose.yml
