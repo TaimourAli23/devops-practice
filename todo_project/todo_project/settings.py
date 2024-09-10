@@ -136,3 +136,46 @@ DATABASES = {
     }
 }
 
+# settings.py
+
+import os
+
+LOGGING = {
+    'version': 1,  # required
+    'disable_existing_loggers': False,  # keeps the default logging configuration
+    'formatters': {
+        'verbose': {
+            'format': '{levelname} {asctime} {module} {message}',
+            'style': '{',
+        },
+        'simple': {
+            'format': '{levelname} {message}',
+            'style': '{',
+        },
+    },
+    'handlers': {
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',  # Outputs logs to the console
+            'formatter': 'simple',
+        },
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',  # Writes logs to a file
+            'filename': os.path.join(BASE_DIR, 'django_app.log'),  # Log file path
+            'formatter': 'verbose',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console', 'file'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+        'todo': {
+            'handlers': ['console', 'file'],
+            'level': 'DEBUG',
+            'propagate': False,
+        },
+    },
+}
