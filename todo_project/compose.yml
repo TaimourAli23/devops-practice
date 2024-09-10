@@ -29,3 +29,9 @@ services:
 volumes:
   db-data:
     driver: local
+
+
+# Staging : uwsgi
+# Production : gunicorn
+# Able to connect to db from app container
+
