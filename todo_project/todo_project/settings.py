@@ -131,51 +131,27 @@ DATABASES = {
         'NAME': os.getenv('DB_NAME','postgres'),
         'USER': os.getenv('DB_USER','postgres'),
         'PASSWORD': os.getenv('DB_PASSWORD', 'admin'),
-        'HOST': os.getenv('DB_HOST','postgresdb'),
-        'PORT': os.getenv('DB_PORT','5432'),
+        'HOST': os.getenv('DB_HOST','localhost'),
+        'PORT': os.getenv('DB_PORT','5433'),
     }
 }
 
-# settings.py
-
-import os
-
 LOGGING = {
-    'version': 1,  # required
-    'disable_existing_loggers': False,  # keeps the default logging configuration
-    'formatters': {
-        'verbose': {
-            'format': '{levelname} {asctime} {module} {message}',
-            'style': '{',
-        },
-        'simple': {
-            'format': '{levelname} {message}',
-            'style': '{',
-        },
-    },
+    'version': 1,
+    'disable_existing_loggers': False,
     'handlers': {
-        'console': {
-            'level': 'DEBUG',
-            'class': 'logging.StreamHandler',  # Outputs logs to the console
-            'formatter': 'simple',
-        },
         'file': {
             'level': 'DEBUG',
-            'class': 'logging.FileHandler',  # Writes logs to a file
-            'filename': os.path.join(BASE_DIR, 'django_app.log'),  # Log file path
-            'formatter': 'verbose',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, 'django.log'),
         },
     },
     'loggers': {
         'django': {
-            'handlers': ['console', 'file'],
-            'level': 'INFO',
-            'propagate': True,
-        },
-        'todo': {
-            'handlers': ['console', 'file'],
+            'handlers': ['file'],
             'level': 'DEBUG',
-            'propagate': False,
+            'propagate': True,
         },
     },
 }
+

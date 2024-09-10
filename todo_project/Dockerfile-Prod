@@ -1,18 +1,19 @@
 FROM python:3.12.5-slim-bullseye
 RUN groupadd --system todoapp && useradd --system -g todoapp todoapp
+
 WORKDIR /app
 COPY requirements.txt /app/
 RUN pip install -r requirements.txt
 COPY . /app/
-
+RUN mkdir -p /app/logs
 #COPY entrypoint.sh /app/entrypoint.sh
 #RUN chmod +x /app/entrypoint.sh
 
+# Change the owner ship of everything to user to current user can write logs as well
 RUN chown --recursive todoapp:todoapp /app
-# user wont be able to write to log files
-# grant permissions
+
 USER todoapp
 
 EXPOSE 8000
 #ENTRYPOINT ["/app/entrypoint.sh"]
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+CMD ["gunicorn", "--config", "gunicorn_config.py", "todo_project.wsgi:application"]
