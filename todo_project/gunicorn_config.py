@@ -13,7 +13,7 @@ timeout = 120            # Worker timeout
 # Logging
 accesslog = '/app/logs/access.log'  # Access log file
 errorlog = '/app/logs/error.log' # Error log file
-loglevel = 'debug'                  # Log level: debug, info, warning, error, critical
+loglevel = 'info'                  # Log level: debug, info, warning, error, critical
 
 # Daemonization (Optional)
 # daemon = True          # Run Gunicorn in the background (not recommended with Docker)

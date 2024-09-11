@@ -19,8 +19,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-      args:
-        DEPLOY_ENVIRONMENT: ${DEPLOY_ENVIRONMENT}
     image: todo-app
     ports:
       - 8000:8000
@@ -29,7 +27,8 @@ services:
       - DB_USER=${DB_USER}
       - DB_PASSWORD=${DB_PASSWORD}
       - DB_HOST=${DB_HOST}
-      - DB_PORT= 5432
+      - DB_PORT=5432
+      - DEPLOY_ENVIRONMENT=${DEPLOY_ENVIRONMENT}
 volumes:
   db-data:
     driver: local
