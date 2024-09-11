@@ -131,16 +131,11 @@ DATABASES = {
         'NAME': os.getenv('DB_NAME','postgres'),
         'USER': os.getenv('DB_USER','postgres'),
         'PASSWORD': os.getenv('DB_PASSWORD', 'admin'),
-<<<<<<< todo-app-new
-        'HOST': os.getenv('DB_HOST','postgresdb4'),
-=======
         'HOST': os.getenv('DB_HOST','postgresdb'),
->>>>>>> main
         'PORT': os.getenv('DB_PORT','5432'),
     }
 }
 
-<<<<<<< todo-app-new
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -163,6 +158,3 @@ LOGGING = {
         },
     },
 }
-
-=======
->>>>>>> main
