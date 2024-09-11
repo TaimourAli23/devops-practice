@@ -33,6 +33,3 @@ volumes:
   db-data:
     driver: local
       - DB_PORT= 5432
-volumes:
-  db-data:
-    driver: local
