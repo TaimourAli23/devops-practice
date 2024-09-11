@@ -32,10 +32,7 @@ services:
 volumes:
   db-data:
     driver: local
-
-
-
-# Staging : uwsgi
-# Production : gunicorn
-# Able to connect to db from app container
-
+      - DB_PORT= 5432
+volumes:
+  db-data:
+    driver: local
