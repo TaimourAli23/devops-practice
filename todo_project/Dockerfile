@@ -4,6 +4,7 @@ RUN apt-get update  \
     build-essential \
     gcc \
     libpq-dev  \
+    postgresql-client \
     && rm -rf /var/lib/apt/lists/*;
 RUN groupadd --system todoapp && useradd --system -g todoapp todoapp
 WORKDIR /app
