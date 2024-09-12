@@ -4,7 +4,7 @@ services:
     ports:
       - 5434:5432
     environment:
-      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_PASSWORD=postgres
 #    volumes:
 #      - db-data:/Users/taimur.ali/pg-data/
     healthcheck:
@@ -23,12 +23,13 @@ services:
     ports:
       - 8000:8000
     environment:
-      - DB_NAME=${DB_NAME}
-      - DB_USER=${DB_USER}
-      - DB_PASSWORD=${DB_PASSWORD}
-      - DB_HOST=${DB_HOST}
+      - DB_NAME=postgres
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres
+      - DB_HOST=postgresdb
       - DB_PORT=5432
-      - DEPLOY_ENVIRONMENT=${DEPLOY_ENVIRONMENT}
+    command:
+      -
 volumes:
   db-data:
     driver: local

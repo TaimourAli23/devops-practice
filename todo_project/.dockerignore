@@ -34,4 +34,4 @@ staticfiles/
 
 # Exclude Docker-related files
 Dockerfile
-compose.yml
+compose-staging.yml
