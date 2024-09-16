@@ -2,9 +2,9 @@ FROM python:3.12.5-slim-bullseye
 RUN apt-get update  \
     && apt-get install -y \
     build-essential \
-    gcc \
+    gcc-10 \
     libpq-dev \
-    postgresql-client\
+    postgresql-client-13.*\
     && rm -rf /var/lib/apt/lists/*;
 # build-essential: Provides necessary tools to compile software.
 # gcc: Compiles C/C++ code and other language support.
