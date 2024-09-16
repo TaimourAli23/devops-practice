@@ -3,15 +3,23 @@ RUN apt-get update  \
     && apt-get install -y \
     build-essential \
     gcc \
-    libpq-dev  \
-    postgresql-client \
+    libpq-dev \
+    postgresql-client\
     && rm -rf /var/lib/apt/lists/*;
-RUN groupadd --system todoapp && useradd --system -g todoapp todoapp
+# build-essential: Provides necessary tools to compile software.
+# gcc: Compiles C/C++ code and other language support.
+# libpq-dev: Development files for building PostgreSQL-dependent applications.
+# postgresql-client: PostgreSQL client for database interactions and management.
+
+RUN groupadd --system todoapp && useradd --system -g todoapp -u 100001 todoapp
 WORKDIR /app
 COPY requirements.txt /app/
 RUN pip install -r requirements.txt
 COPY . /app/
+
+# Without recursive flag the ownership of files inside app wont change
 RUN chown --recursive todoapp:todoapp /app
+
 
 RUN mkdir -p /var/log/todo_project
 RUN chown todoapp:todoapp /var/log/todo_project

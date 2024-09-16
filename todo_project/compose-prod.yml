@@ -8,14 +8,14 @@ services:
     environment:
       - POSTGRES_PASSWORD=postgres
     volumes:
-      - /Users/taimur.ali/pg-data:/var/lib/postgresql/data
+      - db-data:/var/lib/postgresql/data
     healthcheck:
       test: [ "CMD-SHELL", "pg_isready -U postgres" ]
       interval: 10s
       timeout: 5s
       retries: 5
   todo-app:
-    container_name: todo_app_production
+    container_name: todo-app-production
     depends_on:
     - postgresdb
     build:
@@ -27,19 +27,19 @@ services:
     ports:
       - 8000:8000
     volumes:
-      - /Users/taimur.ali/application-logs:/var/log/todo_project
+      - application-logs:/var/log/todo_project
     environment:
       - DB_NAME=postgres
       - DB_USER=postgres
       - DB_PASSWORD=postgres
       - DB_HOST=postgresdb
       - DB_PORT=5432
-    command: uwsgi --module todo_project.wsgi --master --processes 4 --threads 2 --http :8000 --vacuum --logto /var/log/todo_project/uwsgi.log
+    command: uwsgi --module todo_project.wsgi  --uid 100001 --master --processes 4 --threads 2 --http :8000 --vacuum --logto /var/log/todo_project/uwsgi.log
 networks:
   todo-network:
     driver: bridge
-#volumes:
-#  db-data:
-#    driver: local
-#  application-logs:
-#    driver: local
+volumes:
+  db-data:
+    driver: local
+  application-logs:
+    driver: local
