@@ -11,6 +11,7 @@ env/
 *.env/
 
 # Exclude environment variable files
+.env-*
 .env
 *.env
 
@@ -33,4 +34,4 @@ staticfiles/
 
 # Exclude Docker-related files
 Dockerfile
-compose.yml
+compose-*.yml

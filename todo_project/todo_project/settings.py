@@ -131,8 +131,30 @@ DATABASES = {
         'NAME': os.getenv('DB_NAME','postgres'),
         'USER': os.getenv('DB_USER','postgres'),
         'PASSWORD': os.getenv('DB_PASSWORD', 'admin'),
-        'HOST': os.getenv('DB_HOST','postgresdb'),
-        'PORT': os.getenv('DB_PORT','5432'),
+        'HOST': os.getenv('DB_HOST','localhost'),
+        'PORT': os.getenv('DB_PORT','5433'),
     }
 }
 
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, 'django.log'),
+        },
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file','console'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+    },
+}

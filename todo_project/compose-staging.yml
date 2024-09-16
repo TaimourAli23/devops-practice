@@ -1,0 +1,45 @@
+services:
+  postgresdb:
+    image: postgres:16.3
+    networks:
+      - todo-network
+    ports:
+      - 5434:5432
+    environment:
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+  todo-app:
+    container_name: todo-app-staging
+    depends_on:
+    - postgresdb
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: todo-app
+    networks:
+      - todo-network
+    ports:
+      - 8000:8000
+    volumes:
+      - application-logs:/var/log/todo_project
+    environment:
+      - DB_NAME=postgres
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres
+      - DB_HOST=postgresdb
+      - DB_PORT=5432
+    command: gunicorn --bind 0.0.0.0:8000 --workers 3 --worker-class sync --timeout 120 --access-logfile /var/log/todo_project/access.log --error-logfile /var/log/todo_project/error.log --log-level info --preload todo_project.wsgi:application
+networks:
+  todo-network:
+    driver: bridge
+volumes:
+  db-data:
+    driver: local
+  application-logs:
+    driver: local

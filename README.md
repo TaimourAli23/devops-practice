@@ -7,7 +7,13 @@ Run container:
 - docker build -t my-project .
 - docker run -p8000:8000 my-project
 
-Run compose file:
-- docker compose --env-file .env up
-- docker compose exec todo-app python migrate.py migrate
+Run Staging :
+- docker compose -f compose-staging.yml build
+- dokcer compose -f compose-staging.yml up 
+- docker compose -f compose-staging.yml run todo-app python migrate.py migrate
+
+Run Production :
+- docker compose -f compose-prod.yml build
+- dokcer compose -f compose-prod.yml up 
+- docker compose -f compose-prod.yml run todo-app python migrate.py migrate
 
