@@ -1,6 +1,7 @@
 FROM python:3.12.5-slim-bullseye
 RUN apt-get update  \
     && apt-get install -y \
+    python \
     build-essential \
     gcc-10 \
     libpq-dev \
@@ -20,10 +21,15 @@ COPY . /app/
 # Without recursive flag the ownership of files inside app wont change
 RUN chown --recursive todoapp:todoapp /app
 
-
 RUN mkdir -p /var/log/todo_project
 RUN chown todoapp:todoapp /var/log/todo_project
 
 USER todoapp
-
 EXPOSE 8000
+
+
+#FROM nginx:1.27.1-alpine AS final
+#WORKDIR /app
+#COPY --from=build /app /app
+
+
