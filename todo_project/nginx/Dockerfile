@@ -1,6 +1,9 @@
 FROM nginx:1.27.1
 RUN groupadd --system todoapp && useradd --system -g todoapp -u 100001 todoapp
-
+# Install pscops to use ps command
+#RUN apt-get update  \
+#    && apt-get install -y procps \
+#    && rm -rf /var/lib/apt/lists/*;
 COPY ./nginx/nginx.conf /etc/nginx/
 #Gives read-only permissions to todoapp user
 RUN chown root:todoapp /etc/nginx/nginx.conf
@@ -11,3 +14,4 @@ RUN chown todoapp:todoapp /var/log/nginx/todo_project
 
 #USER todoapp
 EXPOSE 8080
+
