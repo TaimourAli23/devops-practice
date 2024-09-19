@@ -1,7 +1,6 @@
 FROM python:3.12.5-slim-bullseye
 RUN apt-get update  \
     && apt-get install -y \
-    python \
     build-essential \
     gcc-10 \
     libpq-dev \
