@@ -26,10 +26,3 @@ RUN chown todoapp:todoapp /var/log/todo_project
 
 USER todoapp
 EXPOSE 8000
-
-
-#FROM nginx:1.27.1-alpine AS final
-#WORKDIR /app
-#COPY --from=build /app /app
-
-
