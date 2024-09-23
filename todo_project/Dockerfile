@@ -20,10 +20,8 @@ COPY . /app/
 # Without recursive flag the ownership of files inside app wont change
 RUN chown --recursive todoapp:todoapp /app
 
-
 RUN mkdir -p /var/log/todo_project
 RUN chown todoapp:todoapp /var/log/todo_project
 
 USER todoapp
-
 EXPOSE 8000
