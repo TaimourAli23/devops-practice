@@ -1,5 +1,9 @@
+import json
+
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
+from django.views.decorators.csrf import csrf_exempt
+
 from .models import Todo
 from .forms import TodoForm
 
@@ -18,10 +22,11 @@ def todo_detail(request, pk):
         'completed': todo.completed,
     })
 
-# View for creating a new Todo and returning JSON response
+@csrf_exempt
 def todo_create(request):
     if request.method == 'POST':
-        form = TodoForm(request.POST)
+        data = json.loads(request.body)
+        form = TodoForm(data["form"])
         if form.is_valid():
             todo = form.save()
             return JsonResponse({
