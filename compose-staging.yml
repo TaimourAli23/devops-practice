@@ -19,7 +19,7 @@ services:
     depends_on:
     - postgresdb
     build:
-      context: .
+      context: todo_project
       dockerfile: Dockerfile
     image: todo-app
     networks:

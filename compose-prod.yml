@@ -14,39 +14,48 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
-  todo-app:
+  todo-app-backend:
     container_name: todo-app-production
     depends_on:
     - postgresdb
     build:
-      context: .
+      context: todo_project
       dockerfile: Dockerfile
     image: todo-app
     networks:
       - todo-network
-#    ports:
-#      - 8000:8000
     volumes:
       - application-logs:/var/log/todo_project
+#    ports:
+#      - 8000:8000
     environment:
       - DB_NAME=postgres
       - DB_USER=postgres
       - DB_PASSWORD=postgres
       - DB_HOST=postgresdb
       - DB_PORT=5432
-    command: uwsgi --module todo_project.wsgi  --uid 100001 --master --processes 4 --threads 2 --socket 0.0.0.0:8000 --vacuum --logto /var/log/todo_project/uwsgi.log
+    command: uwsgi --module todo_project.wsgi --uid 100001 --master --processes 4 --threads 2 --socket 0.0.0.0:8000 --vacuum --logto /var/log/todo_project/uwsgi.log
   nginx:
     depends_on:
-      - todo-app
+      - todo-app-backend
     build:
-      context: .
-      dockerfile: ./nginx/Dockerfile
+      context: todo_project/nginx
+      dockerfile: Dockerfile
     networks:
       - todo-network
     image: nginx
     ports:
-      - 8080:8080
-
+      - 8080:80
+  todo-app-frontend:
+    container_name: todo_app_frontend
+    build:
+      context: frontend/todo_app
+      dockerfile: Dockerfile
+    networks:
+      - todo-network
+    ports:
+      - 3000:3000
+    command: npm run dev
 networks:
   todo-network:
     driver: bridge
