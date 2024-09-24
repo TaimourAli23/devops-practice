@@ -1,6 +1,13 @@
-FROM node:22-alpine3.19
+FROM node:22-alpine AS build
 WORKDIR /app
-COPY package.json /app/package.json
-RUN npm install
+COPY package*.json ./
+RUN npm install --force
 COPY . /app/
-EXPOSE 3000
+RUN npm run build
+
+FROM nginx:1.27.1-alpine AS serve
+COPY --from=build /app/dist /usr/share/nginx/html
+
+COPY ./nginx/todo_app.conf /etc/ngnix/default.conf
+
+EXPOSE 80

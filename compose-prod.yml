@@ -52,8 +52,7 @@ services:
     networks:
       - todo-network
     ports:
-      - 3000:3000
-    command: npm run dev
+      - 3000:80
 networks:
   todo-network:
     driver: bridge
