@@ -3,5 +3,5 @@ FROM nginx:1.27.1
 #RUN apt-get update  \
 #    && apt-get install -y procps \
 #    && rm -rf /var/lib/apt/lists/*;
-COPY ./nginx/nginx.conf /etc/nginx/conf.d/
-EXPOSE 8080
+COPY ./nginx.conf /etc/nginx/conf.d/default.conf
+EXPOSE 80

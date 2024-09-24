@@ -33,5 +33,5 @@ staticfiles/
 *.sublime-workspace
 
 # Exclude Docker-related files
-Dockerfile
+*/Dockerfile
 compose-*.yml
