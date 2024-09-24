@@ -26,8 +26,6 @@ services:
       - todo-network
     volumes:
       - application-logs:/var/log/todo_project
-#    ports:
-#      - 8000:8000
     environment:
       - DB_NAME=postgres
       - DB_USER=postgres
