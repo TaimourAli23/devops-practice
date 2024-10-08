@@ -12,7 +12,6 @@ def todo_list(request):
     todos = Todo.objects.all().values()
     return JsonResponse(list(todos), safe=False)
 
-# View for a single Todo detail as JSON
 def todo_detail(request, pk):
     todo = get_object_or_404(Todo, pk=pk)
     return JsonResponse({

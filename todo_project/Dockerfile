@@ -4,8 +4,9 @@ RUN apt-get update  \
     build-essential \
     gcc-10 \
     libpq-dev \
-    postgresql-client-13.*\
-    && rm -rf /var/lib/apt/lists/*;
+#    postgresql-client-13.*\
+    curl \
+    && rm -rf /var/lib/apt/ldockists/*;
 # build-essential: Provides necessary tools to compile software.
 # gcc: Compiles C/C++ code and other language support.
 # libpq-dev: Development files for building PostgreSQL-dependent applications.

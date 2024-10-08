@@ -28,7 +28,10 @@ SECRET_KEY = 'django-insecure-&55b4o7il^x&tg_vej2-t=q&r+q$(+y)s6r2j53c9fd+5tgqo_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['todo-app-alb-416069774.us-east-1.elb.amazonaws.com',
+                 'localhost',
+                 '127.0.0.1',
+                 'todo_app_backend']
 
 
 # Application definition
@@ -46,10 +49,9 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -135,9 +137,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': os.getenv('DB_NAME','postgres'),
         'USER': os.getenv('DB_USER','postgres'),
-        'PASSWORD': os.getenv('DB_PASSWORD', 'admin'),
-        'HOST': os.getenv('DB_HOST','localhost'),
-        'PORT': os.getenv('DB_PORT','5433'),
+        'PASSWORD': os.getenv('DB_PASSWORD', 'admin123'),
+        'HOST': os.getenv('DB_HOST','todo-app-rds.c93nshwqez3k.us-east-1.rds.amazonaws.com'),
+        'PORT': os.getenv('DB_PORT','5432'),
     }
 }
 

@@ -32,7 +32,7 @@ services:
       - DB_PASSWORD=postgres
       - DB_HOST=postgresdb
       - DB_PORT=5432
-    command: uwsgi --module todo_project.wsgi --uid 100001 --master --processes 4 --threads 2 --socket 0.0.0.0:8000 --vacuum --logto /var/log/todo_project/uwsgi.log
+    command: uwsgi --module todo_project.wsgi --uid 100001 --master --processes 4 --threads 2 --http 0.0.0.0:8000 --vacuum --logto /var/log/todo_project/uwsgi.log
   nginx:
     depends_on:
       - todo-app-backend
@@ -43,7 +43,7 @@ services:
       - todo-network
     image: nginx
     ports:
-      - 8080:80
+      - 80:80
   todo-app-frontend:
     container_name: todo_app_frontend
     build:
@@ -52,7 +52,7 @@ services:
     networks:
       - todo-network
     ports:
-      - 3000:80
+      - 8080:80
 networks:
   todo-network:
     driver: bridge
@@ -61,3 +61,5 @@ volumes:
     driver: local
   application-logs:
     driver: local
+
+#docker run -p 80:8000 -d --user 100001 taimourali/todo_app_backend:latest uwsgi --module todo_project.wsgi --master --processes 4 --threads 2 --http 0.0.0.0:8000 --vacuum --logto /var/log/todo_project/uwsgi.log
