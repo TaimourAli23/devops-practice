@@ -28,10 +28,7 @@ SECRET_KEY = 'django-insecure-&55b4o7il^x&tg_vej2-t=q&r+q$(+y)s6r2j53c9fd+5tgqo_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['todo-app-alb-416069774.us-east-1.elb.amazonaws.com',
-                 'localhost',
-                 '127.0.0.1',
-                 'todo_app_backend']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -135,10 +132,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('DB_NAME','postgres'),
+        'NAME': os.getenv('DB_NAME','postgres'), 
         'USER': os.getenv('DB_USER','postgres'),
         'PASSWORD': os.getenv('DB_PASSWORD', 'admin123'),
-        'HOST': os.getenv('DB_HOST','todo-app-rds.c93nshwqez3k.us-east-1.rds.amazonaws.com'),
+        'HOST': os.getenv('DB_HOST','todo-db.c93nshwqez3k.us-east-1.rds.amazonaws.com'),
         'PORT': os.getenv('DB_PORT','5432'),
     }
 }

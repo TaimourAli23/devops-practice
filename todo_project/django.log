@@ -1,0 +1,99 @@
+Not Found: /favicon.ico
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Not Found: /
+"GET / HTTP/1.1" 404 2310
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 2361
+"GET /api/todos/ HTTP/1.1" 200 2
+Watching for file changes with StatReloader
+Not Found: /
+"GET / HTTP/1.1" 404 2310
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 2361
+"GET /api/todos/ HTTP/1.1" 200 2
+Not Found: /favicon.ico
+Internal Server Error: /api/todos/
+Traceback (most recent call last):
+  File "/Users/taimur.ali/Codebase/devops-practice/venv/lib/python3.11/site-packages/django/db/backends/base/base.py", line 279, in ensure_connection
+    self.connect()
+  File "/Users/taimur.ali/Codebase/devops-practice/venv/lib/python3.11/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taimur.ali/Codebase/devops-practice/venv/lib/python3.11/site-packages/django/db/backends/base/base.py", line 256, in connect
+    self.connection = self.get_new_connection(conn_params)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taimur.ali/Codebase/devops-practice/venv/lib/python3.11/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taimur.ali/Codebase/devops-practice/venv/lib/python3.11/site-packages/django/db/backends/postgresql/base.py", line 332, in get_new_connection
+    connection = self.Database.connect(**conn_params)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taimur.ali/Codebase/devops-practice/venv/lib/python3.11/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.OperationalError: could not translate host name "todo-db.c93nshwqez3k.us-east-1.rds.amazonaws.com" to address: nodename nor servname provided, or not known
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/taimur.ali/Codebase/devops-practice/venv/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taimur.ali/Codebase/devops-practice/venv/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taimur.ali/Codebase/devops-practice/todo_project/todo/views.py", line 13, in todo_list
+    return JsonResponse(list(todos), safe=False)
+                        ^^^^^^^^^^^
+  File "/Users/taimur.ali/Codebase/devops-practice/venv/lib/python3.11/site-packages/django/db/models/query.py", line 400, in __iter__
+    self._fetch_all()
+  File "/Users/taimur.ali/Codebase/devops-practice/venv/lib/python3.11/site-packages/django/db/models/query.py", line 1928, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taimur.ali/Codebase/devops-practice/venv/lib/python3.11/site-packages/django/db/models/query.py", line 210, in __iter__
+    for row in compiler.results_iter(
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taimur.ali/Codebase/devops-practice/venv/lib/python3.11/site-packages/django/db/models/sql/compiler.py", line 1525, in results_iter
+    results = self.execute_sql(
+              ^^^^^^^^^^^^^^^^^
+  File "/Users/taimur.ali/Codebase/devops-practice/venv/lib/python3.11/site-packages/django/db/models/sql/compiler.py", line 1572, in execute_sql
+    cursor = self.connection.cursor()
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taimur.ali/Codebase/devops-practice/venv/lib/python3.11/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taimur.ali/Codebase/devops-practice/venv/lib/python3.11/site-packages/django/db/backends/base/base.py", line 320, in cursor
+    return self._cursor()
+           ^^^^^^^^^^^^^^
+  File "/Users/taimur.ali/Codebase/devops-practice/venv/lib/python3.11/site-packages/django/db/backends/base/base.py", line 296, in _cursor
+    self.ensure_connection()
+  File "/Users/taimur.ali/Codebase/devops-practice/venv/lib/python3.11/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taimur.ali/Codebase/devops-practice/venv/lib/python3.11/site-packages/django/db/backends/base/base.py", line 278, in ensure_connection
+    with self.wrap_database_errors:
+  File "/Users/taimur.ali/Codebase/devops-practice/venv/lib/python3.11/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/Users/taimur.ali/Codebase/devops-practice/venv/lib/python3.11/site-packages/django/db/backends/base/base.py", line 279, in ensure_connection
+    self.connect()
+  File "/Users/taimur.ali/Codebase/devops-practice/venv/lib/python3.11/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taimur.ali/Codebase/devops-practice/venv/lib/python3.11/site-packages/django/db/backends/base/base.py", line 256, in connect
+    self.connection = self.get_new_connection(conn_params)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taimur.ali/Codebase/devops-practice/venv/lib/python3.11/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taimur.ali/Codebase/devops-practice/venv/lib/python3.11/site-packages/django/db/backends/postgresql/base.py", line 332, in get_new_connection
+    connection = self.Database.connect(**conn_params)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taimur.ali/Codebase/devops-practice/venv/lib/python3.11/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: could not translate host name "todo-db.c93nshwqez3k.us-east-1.rds.amazonaws.com" to address: nodename nor servname provided, or not known
+

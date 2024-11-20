@@ -15,6 +15,7 @@ RUN chown -R nginx:nginx /var/cache/nginx && \
     chown -R nginx:nginx /etc/nginx/conf.d
 RUN touch /var/run/nginx.pid && \
         chown -R nginx:nginx /var/run/nginx.pid
-USER nginx
+# As the port below 80 can be only opened by root so we have to run a specfic user herezzzxx
+#USER nginx
 
 EXPOSE 80

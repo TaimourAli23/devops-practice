@@ -26,3 +26,8 @@ RUN chown todoapp:todoapp /var/log/todo_project
 
 USER todoapp
 EXPOSE 8000
+
+#CMD ["uwsgi","--module","todo_project.wsgi","--master","--processes","4","--threads","2","--http","0.0.0.0:8000","--vacuum"]
+
+#uwsgi,--module,todo_project.wsgi,--master,--processes,4,--threads,2,--http,0.0.0.0:8000,--vacuum,--logto,/var/log/todo_project/uwsgi.log
+#/app
