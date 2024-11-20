@@ -31,7 +31,7 @@ jobs:
 
       - name: Push Docker Image
         run: |
-          docker tag todo-app:${{ github.sha }} taimourali/todo-app:${{ github.sha }} taimourali/todo-app:latest
+          docker tag todo-app:${{ github.sha }} taimourali/todo-app:${{ github.sha }}
           docker tag todo-app:${{ github.sha }} taimourali/todo-app:latest
           docker push taimourali/todo-app:latest
           docker push taimourali/todo-app:${{ github.sha }}
