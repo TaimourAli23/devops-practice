@@ -25,7 +25,8 @@ jobs:
 #
       - name: Build Docker Image
         run: |
-          docker build -t todo-app:${{ github.sha }} -f ${{ github.workspace }}/todo_project/Dockerfile
+          docker build -t todo-app:${{ github.sha }} -f ${{ github.workspace }}/todo_project/Dockerfile ${{ github.workspace }}
+
 
       - name: Push Docker Image
         run: |
