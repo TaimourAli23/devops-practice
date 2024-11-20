@@ -10,7 +10,7 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-      - nmae: List Directory
+      - name: List Directory
         run: |
           ls ${{ github.workspace }}
 #
